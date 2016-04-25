@@ -50,6 +50,12 @@ export default Ember.Mixin.create({
           capability: 'patients'
         },
         {
+          title: 'Admitted Patients',
+          iconClass: 'octicon-chevron-right',
+          route: 'patients.admitted',
+          capability: 'patients'
+        },
+        {
           title: 'New Patient',
           iconClass: 'octicon-plus',
           route: 'patients.edit',
@@ -261,6 +267,12 @@ export default Ember.Mixin.create({
           route: 'users.edit',
           subroute: 'new',
           capability: 'add_user'
+        },
+        {
+          title: 'User Roles',
+          iconClass: 'octicon-chevron-right',
+          route: 'admin.roles',
+          capability: 'user_roles'
         }
       ]
     }

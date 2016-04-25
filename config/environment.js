@@ -19,6 +19,15 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.contentSecurityPolicy = {
+    'connect-src': "'self'",
+    'default-src': "'self'",
+    'frame-src': "'self'",
+    'img-src': "'self' filesystem: data:",
+    'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
+    'style-src': "'self' 'unsafe-inline'"
+  };
+
   if (environment === 'test') {
     // Testem prefers this...
     ENV.baseURL = '/';
@@ -50,6 +59,9 @@ module.exports = function(environment) {
       'bower_components/pouchdb/dist/pouchdb.js'
     ]
   };
+  if (environment === 'production') {
+    ENV.serviceWorker.debug = false;
+  }
 
   return ENV;
 };

@@ -13,18 +13,17 @@ To install the frontend please do the following:
 1. Make sure you have installed [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 2. Make sure you have installed [Node.js](https://nodejs.org/en/download/). Versions after 0.10.0 should work, but please note if you encounter errors using 5.x it may be necessary to upgrade your npm version. Versions after 3.5.x should work:
     1. `npm install -g npm`
-3. Install [ember-cli latest](https://www.npmjs.org/package/ember-cli): `npm install -g ember-cli@latest`
+3. Install [ember-cli latest](https://www.npmjs.org/package/ember-cli): `npm install -g ember-cli@latest`.
+   Depending on your [npm permissions](https://docs.npmjs.com/getting-started/fixing-npm-permissions) you might need root access to install ember-cli.
 4. Install [bower](https://www.npmjs.org/package/bower): `npm install -g bower`
-5. Clone this repo with `git clone https://github.com/HospitalRun/hospitalrun-frontend`, go to the cloned folder and:
-    1. `npm install` to install needed node modules.
-    2. `bower install` to install needed bower modules.
-    3. `npm install -g phantomjs-prebuilt` to install PhantomJS2, which is needed to run tests.
-6. Install and configure [CouchDB](http://couchdb.apache.org/)
+5. Make sure you have Ruby installed (for the scss linter).
+6. Clone this repo with `git clone https://github.com/HospitalRun/hospitalrun-frontend`, go to the cloned folder and run `script/bootstrap`. (*Note: Depending on your [npm permissions](https://docs.npmjs.com/getting-started/fixing-npm-permissions) you might need root access to install PhantomJS2; also, Windows users must run with [Cygwin](http://cygwin.org/)*, and will need to install Ruby)
+7. Install and configure [CouchDB](http://couchdb.apache.org/)
     1. Download and install CouchDB from http://couchdb.apache.org/#download
     2. Create admin user:
-        1. If you have just installed CouchDB and have no admin user, please run `./script/initcouch.sh`. A user `hradmin` will be created with password: `test`.
-        2. If you already have a CouchDB admin user, please run `./script/initcouch.sh USER PASS` where `USER` and `PASS` are the CouchDB admin user credentials.
-7. Copy the `server/config-example.js` to `server/config.js`.
+        1. If you have just installed CouchDB and have no admin user, please run `./script/initcouch.sh` in the folder you cloned the HospitalRun repo.  A user `hradmin` will be created with password: `test`.
+        2. If you already have a CouchDB admin user, please run `./script/initcouch.sh USER PASS` in the folder you cloned the HospitalRun repo.  `USER` and `PASS` are the CouchDB admin user credentials.
+8. Copy the `server/config-example.js` to `server/config.js` in the folder you cloned the HospitalRun repo.
 
 ### Experimental
 If you are willing to try using `make`, ensure you have installed git, node and couchdb (steps 1, 2 and 6 above), you may skip the rest.  This requires couchdb in the path to work correctly.
@@ -47,14 +46,14 @@ Otherwise, here are some tips for common issues:
 
 **The browser shows only a loading dialog**
 
-Is your server (still) running? Is Couch running? If not, that's problably the issue.
+Is your server (still) running? Is Couch running? If not, that's probably the issue.
 
 **My changes aren't showing up in the browser**
 
 Try a browser refresh `cmd + r`.
 
 ## Loading sample data
-If you would like to load sample data, you can do so by navigating to **Load DB** under the Adminstration menu.  You should see the following screen:
+If you would like to load sample data, you can do so by navigating to **Load DB** under the Administration menu.  You should see the following screen:
 ![Load DB screenshot](screenshots/load-db.png)
 
 Click on ***Choose File*** and select the file **sample-data.txt** which is included in root directory of the repo at [sample-data.txt](sample-data.txt).
@@ -82,9 +81,18 @@ test('visiting /patients', function(assert) {
   });
 });
 ```
-Contributing
-------------
-Contributions are welcome via pull requests and issues.  Please see our [contributing guide](https://github.com/hospitalrun/hospitalrun-frontend/blob/master/CONTRIBUTING.md) for more details.
+
+### The SCSS linter
+
+To keep our styling scalable and consistent, we are using an [scss linter](https://www.npmjs.com/package/ember-cli-scss-lint) that will throw an error in the build if you do not conform to it's syntax rules. The syntax rules are defined in the [`.scss-lint.yml`](https://github.com/HospitalRun/hospitalrun-frontend/blob/master/.scss-lint.yml) file, and documentation for each linter is [available here](https://github.com/brigade/scss-lint/blob/master/lib/scss_lint/linter/README.md).
+
+The easiest way to work with styles in the project and abide by our linting rules is to install the [linter-scss-lint](https://atom.io/packages/linter-scss-lint) package for Atom. The package will then show you in real time where your styles are breaking the linter and how to correct them.
+
+## Contributing
+
+Contributions are welcome via pull requests and issues.  Please see our [contributing guide](https://github.com/hospitalrun/hospitalrun-frontend/blob/master/.github/CONTRIBUTING.md) for more details.
+
+**Seriously, please read the [Contribution Guide](https://github.com/hospitalrun/hospitalrun-frontend/blob/master/.github/CONTRIBUTING.md).**
 
 ## Further Reading / Useful Links
 
