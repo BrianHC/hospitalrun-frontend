@@ -21,7 +21,7 @@ export default {
     requests: 'Requisições',
     completed: 'Completo',
     id: 'Id',
-    gender: 'Gênero',
+    sex: 'Sexo',
     age: 'Idade'
 
   },
@@ -40,7 +40,8 @@ export default {
 
   login: {
     messages: {
-      sign_in:  'inscreva-se'
+      sign_in:  'inscreva-se',
+      error:    'Nome de usuário ou senha está incorreta.'
     },
     labels: {
       password: 'Senha',
